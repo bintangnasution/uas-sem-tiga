@@ -41,6 +41,30 @@
       KelilingTrapesium();
       die();
     }
+    if (isset($_GET['hasilLJG'])) {
+      LuasJajarGenjang();
+      die();
+    }
+    if (isset($_GET['hasilKJG'])) {
+      KelilingJajarGenjang();
+      die();
+    }
+    if (isset($_GET['hasilLLL'])) {
+      LuasLayangLayang();
+      die();
+    }
+    if (isset($_GET['hasilKLL'])) {
+      KelilingLayangLayang();
+      die();
+    }
+    if (isset($_GET['hasilLBK'])) {
+      LuasBelahKetupat();
+      die();
+    }
+    if (isset($_GET['hasilKBK'])) {
+      KelilingBelahKetupat();
+      die();
+    }
 
 
 $bangun_datar= $_POST['bangun_datar'];
@@ -136,31 +160,54 @@ if ($bangun_datar=='Trapesium') {
 if ($bangun_datar=='JajarGenjang') {
   if($metode == 'Luas'){
     echo 'Luas '.$bangun_datar.'';
+    echo'<br><br><form method="post" action="proses.php?hasilLJG">';
+    echo'Masukkan Alas :<input type="text" name="alas"><br><br>';
+    echo'Masukkan Tinggi :<input type="text" name="tinggi"><br><br>';
+    echo"<br><button>Hitung</button>";
+
   }else{
     echo 'Keliling '.$bangun_datar.'';
+    echo'<br><br><form method="post" action="proses.php?hasilKJG">';
+    echo'Masukkan Sisi A :<input type="text" name="sisia"><br><br>';
+    echo'Masukkan Sisi B :<input type="text" name="sisib"><br><br>';
+    echo"<br><button>Hitung</button>";
+    echo"</form>";
   }  
 }
 if ($bangun_datar=='Layang-layang') {
   if($metode == 'Luas'){
     echo 'Luas '.$bangun_datar.'';
+    echo'<br><br><form method="post" action="proses.php?hasilLLL">';
+    echo'Masukkan Diagonal 1 :<input type="text" name="dig1"><br><br>';
+    echo'Masukkan Diagonal 2 :<input type="text" name="dig2"><br><br>';
+    echo"<br><button>Hitung</button>";
+    echo"</form>";
   }else{
     echo 'Keliling '.$bangun_datar.'';
+    echo'<br><br><form method="post" action="proses.php?hasilKLL">';
+    echo'Masukkan Sisi Sejajar A :<input type="text" name="sisia"><br><br>';
+    echo'Masukkan Sisi Sejajar B :<input type="text" name="sisib"><br><br>';
+    echo"<br><button>Hitung</button>";
+    echo"</form>";
   }  
 }
 if ($bangun_datar=='BelahKetupat') {
   if($metode == 'Luas'){
     echo 'Luas '.$bangun_datar.'';
+    echo'<br><br><form method="post" action="proses.php?hasilLBK">';
+    echo'Masukkan Diagonal 1 :<input type="text" name="dig1"><br><br>';
+    echo'Masukkan Diagonal 2 :<input type="text" name="dig2"><br><br>';
+    echo"<br><button>Hitung</button>";
+    echo"</form>";
   }else{
     echo 'Keliling '.$bangun_datar.'';
+    echo'<br><br><form method="post" action="proses.php?hasilKBK">';
+    echo'Masukkan Sisi A :<input type="text" name="sisia"><br><br>';
+    echo"<br><button>Hitung</button>";
+    echo"</form>";
   }  
 }
-if ($bangun_datar=='Elips') {
-  if($metode == 'Luas'){
-    echo 'Luas '.$bangun_datar.'';
-  }else{
-    echo 'Keliling '.$bangun_datar.'';
-  }  
-}
+
 
 
 
@@ -216,6 +263,36 @@ function LuasTrapesium(){
 function KelilingTrapesium(){
   if (isset($_POST['sisia'])||isset($_POST['sisib'])||isset($_POST['sisic'])||isset($_POST['sisid'])) {
     echo $_POST['sisia']+$_POST['sisib']+$_POST['sisic']+$_POST['sisid'];
+  }
+}
+function LuasJajarGenjang(){
+  if (isset($_POST['alas'])||isset($_POST['tinggi'])) {
+    echo $_POST['alas']*$_POST['tinggi'];
+  }
+}
+function KelilingJajarGenjang(){
+  if (isset($_POST['sisia'])||isset($_POST['sisib'])) {
+    echo (2*$_POST['sisia'])+(2*$_POST['sisib']);
+  }
+}
+function LuasLayangLayang(){
+  if (isset($_POST['dig1'])||isset($_POST['dig2'])) {
+    echo ($_POST['dig1']*$_POST['dig2'])/2;
+  }
+}
+function KelilingLayangLayang(){
+  if (isset($_POST['sisia'])||isset($_POST['sisib'])) {
+    echo (2*$_POST['sisia'])+(2*$_POST['sisib']);
+  }
+}
+function LuasBelahKetupat(){
+  if (isset($_POST['dig1'])||isset($_POST['dig2'])) {
+    echo ($_POST['dig1']*$_POST['dig2'])/2;
+  }
+}
+function KelilingBelahKetupat(){
+  if (isset($_POST['sisia'])) {
+    echo 4*$_POST['sisia'];
   }
 }
 

@@ -20,7 +20,6 @@
     <option value="JajarGenjang">
     <option value="Layang-layang">
     <option value="BelahKetupat">
-    <option value="Elips">
   </datalist> <br><br>
 
   <label for="metode"> Pilih Metode Hitung :</label>
